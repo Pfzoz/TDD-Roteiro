@@ -1,6 +1,6 @@
 package org.example;
 
-public class Money {
+abstract class Money {
     protected int amount;
 
     @Override
@@ -8,4 +8,17 @@ public class Money {
         Money money = (Money) object;
         return amount == money.amount && getClass().equals(money.getClass());
     }
+
+    static Money dollar(int amount) {
+        return new Dollar(amount);
+    }
+
+    static Money franc(int amount) {
+        return new Franc(amount);
+    }
+
+    abstract Money times(int multiplier);
+
+
+
 }
